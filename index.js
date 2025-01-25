@@ -14,9 +14,13 @@ function promptLength() {
 function promptUppercase() {
   let passwordUppercase = "yes";
 	do {
-		passwordUppercase =	prompt("Would you like to use uppercase?", "yes/no").toLowerCase();
+		passwordUppercase =	prompt("Would you like to use uppercase?", "yes/no");
+    if(passwordUppercase === null){
+      return
+    }else{
+      passwordUppercase.toLowerCase()
     console.log(passwordUppercase);
-    console.log(typeof(passwordUppercase))
+    console.log(typeof(passwordUppercase))}
 	} while (passwordUppercase !== "yes" || passwordUppercase !== "no");
 	return passwordUppercase;
 }
