@@ -211,16 +211,3 @@ Submit?`
 	);
 	return submit;
 }
-
-// if (passwordLength > 0 || typeof passwordLength === "number")
-
-// if (passwordUppercase != "yes" || passwordUppercase != "no") {
-// 	passwordUppercase = toLowerCase(
-// 		prompt("Would you like to use uppercase?", "yes/no")
-// 	);
-// }
-
-// passwordNumbers = prompt("Would you like to use numbers?", "yes/no");
-// if (passwordNumbers != "yes" || passwordNumbers != "no") {
-// 	passwordNumbers = prompt("Would you like to use numbers?", "yes/no");
-// }
