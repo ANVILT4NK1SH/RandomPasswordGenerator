@@ -2,148 +2,190 @@ const lowerCase = "abcdefghijklmnopqrstuvwxyz";
 const upperCase = lowerCase.toUpperCase();
 const numbers = "0123456789";
 const spCharacters = "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?";
-let usedCharacters = lowerCase;
-let result = "";
-let passwordLength = promptLength();
-let passwordUppercase = promptUppercase();
-let passwordNumbers = promptUseNumbers();
-let specialCharacters = promptSpecialCharacters();
-let submit = promptSubmit(
-	passwordLength,
-	passwordUppercase,
-	passwordNumbers,
-	specialCharacters
-);
 
-if (submit === true && passwordLength !== NaN) {
-	let i = 0;
-	if (
-		passwordUppercase === false &&
-		passwordNumbers === false &&
-		specialCharacters === false
-	) {
-		while (i < passwordLength) {
-			result += usedCharacters.charAt(
-				Math.floor(Math.random() * usedCharacters.length)
-			);
-			i++;
-		}
-		console.log(result);
-		document.getElementById("password").textContent = `Here's your new password: ${result}`
-	}
+function generate() {
+	let usedCharacters = lowerCase;
+	let result = "";
+	let passwordLength = promptLength();
+	let passwordUppercase = promptUppercase();
+	let passwordNumbers = promptUseNumbers();
+	let specialCharacters = promptSpecialCharacters();
+	let submit = promptSubmit(
+		passwordLength,
+		passwordUppercase,
+		passwordNumbers,
+		specialCharacters
+	);
 
-	if (
-		passwordUppercase === true &&
-		passwordNumbers === false &&
-		specialCharacters === false
-	) {
-		usedCharacters = usedCharacters + upperCase;
-		while (i < passwordLength) {
-			result += usedCharacters.charAt(
-				Math.floor(Math.random() * usedCharacters.length)
-			);
-			i++;
-		}
-		console.log(result);
-		document.getElementById("password").textContent = `Here's your new password: ${result}`
-	}
+	if (submit === true && !Number.isNaN(passwordLength)) {
+		// if ( currentVisible === 'hidden') {
+		// 	password.style.visibility = 'visible'
+		// }
 
-	if (
-		passwordUppercase === false &&
-		passwordNumbers === true &&
-		specialCharacters === false
-	) {
-		usedCharacters = usedCharacters + numbers;
-		while (i < passwordLength) {
-			result += usedCharacters.charAt(
-				Math.floor(Math.random() * usedCharacters.length)
-			);
-			i++;
+		let i = 0;
+		if (
+			passwordUppercase === false &&
+			passwordNumbers === false &&
+			specialCharacters === false
+		) {
+			while (i < passwordLength) {
+				result += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
+			console.log(result);
+			document.getElementById(
+				"message"
+			).textContent = `Here's your new password:`;
+			document.getElementById("password").textContent = result;
 		}
-		console.log(result);
-		document.getElementById("password").textContent = `Here's your new password: ${result}`
-	}
 
-	if (
-		passwordUppercase === false &&
-		passwordNumbers === false &&
-		specialCharacters === true
-	) {
-		usedCharacters = usedCharacters + spCharacters;
-		while (i < passwordLength) {
-			result += usedCharacters.charAt(
-				Math.floor(Math.random() * usedCharacters.length)
-			);
-			i++;
+		if (
+			passwordUppercase === true &&
+			passwordNumbers === false &&
+			specialCharacters === false
+		) {
+			usedCharacters = usedCharacters + upperCase;
+			while (i < passwordLength) {
+				result += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
+			console.log(result);
+			document.getElementById(
+				"message"
+			).textContent = `Here's your new password:`;
+			document.getElementById("password").textContent = result;
 		}
-		console.log(result);
-		document.getElementById("password").textContent = `Here's your new password: ${result}`
-	}
 
-	if (
-		passwordUppercase === true &&
-		passwordNumbers === true &&
-		specialCharacters === false
-	) {
-		usedCharacters = usedCharacters + upperCase + numbers;
-		while (i < passwordLength) {
-			result += usedCharacters.charAt(
-				Math.floor(Math.random() * usedCharacters.length)
-			);
-			i++;
+		if (
+			passwordUppercase === false &&
+			passwordNumbers === true &&
+			specialCharacters === false
+		) {
+			usedCharacters = usedCharacters + numbers;
+			while (i < passwordLength) {
+				result += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
+			console.log(result);
+			document.getElementById(
+				"message"
+			).textContent = `Here's your new password:`;
+			document.getElementById("password").textContent = result;
 		}
-		console.log(result);
-		document.getElementById("password").textContent = `Here's your new password: ${result}`
-	}
 
-	if (
-		passwordUppercase === false &&
-		passwordNumbers === true &&
-		specialCharacters === true
-	) {
-		usedCharacters = usedCharacters + numbers + spCharacters;
-		while (i < passwordLength) {
-			result += usedCharacters.charAt(
-				Math.floor(Math.random() * usedCharacters.length)
-			);
-			i++;
+		if (
+			passwordUppercase === false &&
+			passwordNumbers === false &&
+			specialCharacters === true
+		) {
+			usedCharacters = usedCharacters + spCharacters;
+			while (i < passwordLength) {
+				result += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
+			console.log(result);
+			document.getElementById(
+				"message"
+			).textContent = `Here's your new password:`;
+			document.getElementById("password").textContent = result;
 		}
-		console.log(result);
-		document.getElementById("password").textContent = `Here's your new password: ${result}`
-	}
 
-	if (
-		passwordUppercase === true &&
-		passwordNumbers === false &&
-		specialCharacters === true
-	) {
-		usedCharacters = usedCharacters + upperCase + spCharacters;
-		while (i < passwordLength) {
-			result += usedCharacters.charAt(
-				Math.floor(Math.random() * usedCharacters.length)
-			);
-			i++;
+		if (
+			passwordUppercase === true &&
+			passwordNumbers === true &&
+			specialCharacters === false
+		) {
+			usedCharacters = usedCharacters + upperCase + numbers;
+			while (i < passwordLength) {
+				result += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
+			console.log(result);
+			document.getElementById(
+				"message"
+			).textContent = `Here's your new password:`;
+			document.getElementById("password").textContent = result;
 		}
-		console.log(result);
-		document.getElementById("password").textContent = `Here's your new password: ${result}`
-	}
 
-	if (
-		passwordUppercase === true &&
-		passwordNumbers === true &&
-		specialCharacters === true
-	) {
-		usedCharacters = usedCharacters + upperCase + numbers + spCharacters;
-		while (i < passwordLength) {
-			result += usedCharacters.charAt(
-				Math.floor(Math.random() * usedCharacters.length)
-			);
-			i++;
+		if (
+			passwordUppercase === false &&
+			passwordNumbers === true &&
+			specialCharacters === true
+		) {
+			usedCharacters = usedCharacters + numbers + spCharacters;
+			while (i < passwordLength) {
+				result += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
+			console.log(result);
+			document.getElementById(
+				"message"
+			).textContent = `Here's your new password:`;
+			document.getElementById("password").textContent = result;
 		}
-		console.log(result);
-		document.getElementById("password").textContent = `Here's your new password: ${result}`
+
+		if (
+			passwordUppercase === true &&
+			passwordNumbers === false &&
+			specialCharacters === true
+		) {
+			usedCharacters = usedCharacters + upperCase + spCharacters;
+			while (i < passwordLength) {
+				result += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
+			console.log(result);
+			document.getElementById(
+				"message"
+			).textContent = `Here's your new password:`;
+			document.getElementById("password").textContent = result;
+		}
+
+		if (
+			passwordUppercase === true &&
+			passwordNumbers === true &&
+			specialCharacters === true
+		) {
+			usedCharacters = usedCharacters + upperCase + numbers + spCharacters;
+			while (i < passwordLength) {
+				result += usedCharacters.charAt(
+					Math.floor(Math.random() * usedCharacters.length)
+				);
+				i++;
+			}
+			console.log(result);
+			document.getElementById(
+				"message"
+			).textContent = `Here's your new password:`;
+			document.getElementById("password").textContent = result;
+		}
+	} else {
+		location.reload();
+		return "Try Again!";
 	}
-} else{ location.reload();}
+}
+
+function copyPassword() {
+	let password = document.getElementById("password");
+
+	navigator.clipboard.writeText(password.textContent);
+
+	alert(`Password copied: ${password.textContent}`)
+}
 
 function promptLength() {
 	let passwordLength = "12";
@@ -151,7 +193,7 @@ function promptLength() {
 		passwordLength = prompt("How many characters in your password?", 12);
 		passwordLength = parseInt(passwordLength);
 		console.log(passwordLength);
-	} while (passwordLength <= 0 || typeof passwordLength != "number");
+	} while (passwordLength <= 0 || !Number.isInteger(passwordLength));
 	return passwordLength;
 }
 

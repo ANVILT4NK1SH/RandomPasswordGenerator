@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 <body>
   <h1>
     Password Generator
-  </h1>
-  <h3 id="password">
 
-  </h3>
+  </h1>
+  <h3 id="message"></h3>
+  <div class="jsPasswordDiv passwordDiv">
+    <h3 id="password" onclick="copyPassword()">New Password</h3>
+    <p>^click to copy password^</p>
+  </div>
+  <button id="generateBtn" onclick="generate()">Generate</button>
   <script src="index.js"></script>
 </body>
 </html>
