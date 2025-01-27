@@ -174,8 +174,7 @@ function generate() {
 			document.getElementById("password").textContent = result;
 		}
 	} else {
-		location.reload();
-		return "Try Again!";
+		document.getElementById("password").textContent = "Try again"
 	}
 }
 
