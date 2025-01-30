@@ -3,25 +3,46 @@ const upperCase = lowerCase.toUpperCase();
 const numbers = "0123456789";
 const spCharacters = "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?";
 
+// const randomPassword = {
+// 	usedCharacters: "abcdefghijklmnopqrstuvwxyz",
+// 	numbers: "0123456789",
+// 	spCharacters: "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?",
+// 	passwordLength: '12',
+
+// 	promptLength: () => {
+// 		do {
+// 			this.passwordLength = prompt("How many characters in your password?", 12);
+// 			this.passwordLength = parseInt(this.passwordLength);
+// 			if (Number.isNaN(this.passwordLength)) {
+// 				return;
+// 			}
+// 		} while (this.passwordLength <= 0);
+// 		console.log(this.passwordLength);
+// 		return this.passwordLength;
+// 	},
+
+// 	promptUppercase: () => {
+		
+// 	},
+// };
+
 function generate() {
 	let usedCharacters = lowerCase;
 	let result = "";
 	let passwordLength = promptLength();
-	let passwordUppercase = promptUppercase();
-	let passwordNumbers = promptUseNumbers();
-	let specialCharacters = promptSpecialCharacters();
-	let submit = promptSubmit(
-		passwordLength,
-		passwordUppercase,
-		passwordNumbers,
-		specialCharacters
-	);
+	if (passwordLength) {
+		var passwordUppercase = promptUppercase();
+		var passwordNumbers = promptUseNumbers();
+		var specialCharacters = promptSpecialCharacters();
+		var submit = promptSubmit(
+			passwordLength,
+			passwordUppercase,
+			passwordNumbers,
+			specialCharacters
+		);
+	}
 
-	if (submit === true && !Number.isNaN(passwordLength)) {
-		// if ( currentVisible === 'hidden') {
-		// 	password.style.visibility = 'visible'
-		// }
-
+	if (submit) {
 		let i = 0;
 		if (
 			passwordUppercase === false &&
@@ -174,8 +195,11 @@ function generate() {
 			document.getElementById("password").textContent = result;
 		}
 	} else {
-		document.getElementById("password").textContent = "Try again"
+		document.getElementById("password").textContent = "Try again";
 	}
+	const passwordDiv = document.getElementsByClassName("jsPasswordDiv");
+	console.log(passwordDiv);
+	passwordDiv[0].style.display = "block";
 }
 
 function copyPassword() {
@@ -183,7 +207,7 @@ function copyPassword() {
 
 	navigator.clipboard.writeText(password.textContent);
 
-	alert(`Password copied: ${password.textContent}`)
+	alert(`Password copied: ${password.textContent}`);
 }
 
 function promptLength() {
@@ -191,8 +215,11 @@ function promptLength() {
 	do {
 		passwordLength = prompt("How many characters in your password?", 12);
 		passwordLength = parseInt(passwordLength);
-		console.log(passwordLength);
-	} while (passwordLength <= 0 || !Number.isInteger(passwordLength));
+		if (Number.isNaN(passwordLength)) {
+			return;
+		}
+	} while (passwordLength <= 0);
+	console.log(passwordLength);
 	return passwordLength;
 }
 
